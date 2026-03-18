@@ -56,7 +56,7 @@
             // Title
             // 
             Title.AutoSize = true;
-            Title.Location = new Point(12, 9);
+            Title.Location = new Point(12, 19);
             Title.Name = "Title";
             Title.Size = new Size(126, 25);
             Title.TabIndex = 0;
@@ -66,14 +66,14 @@
             // input
             // 
             input.Font = new Font("맑은 고딕", 18F);
-            input.Location = new Point(18, 77);
+            input.Location = new Point(18, 87);
             input.Name = "input";
             input.Size = new Size(310, 55);
             input.TabIndex = 2;
             // 
             // Clear
             // 
-            Clear.Location = new Point(185, 138);
+            Clear.Location = new Point(185, 148);
             Clear.Name = "Clear";
             Clear.Size = new Size(69, 54);
             Clear.TabIndex = 2;
@@ -83,7 +83,7 @@
             // 
             // button_1
             // 
-            button_1.Location = new Point(21, 330);
+            button_1.Location = new Point(21, 340);
             button_1.Name = "button_1";
             button_1.Size = new Size(69, 54);
             button_1.TabIndex = 3;
@@ -93,7 +93,7 @@
             // 
             // button_2
             // 
-            button_2.Location = new Point(102, 330);
+            button_2.Location = new Point(102, 340);
             button_2.Name = "button_2";
             button_2.Size = new Size(69, 54);
             button_2.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             // button_3
             // 
-            button_3.Location = new Point(185, 330);
+            button_3.Location = new Point(185, 340);
             button_3.Name = "button_3";
             button_3.Size = new Size(69, 54);
             button_3.TabIndex = 5;
@@ -113,7 +113,7 @@
             // 
             // button_6
             // 
-            button_6.Location = new Point(185, 265);
+            button_6.Location = new Point(185, 275);
             button_6.Name = "button_6";
             button_6.Size = new Size(69, 54);
             button_6.TabIndex = 8;
@@ -123,7 +123,7 @@
             // 
             // button_5
             // 
-            button_5.Location = new Point(102, 265);
+            button_5.Location = new Point(102, 275);
             button_5.Name = "button_5";
             button_5.Size = new Size(69, 54);
             button_5.TabIndex = 7;
@@ -133,7 +133,7 @@
             // 
             // button_4
             // 
-            button_4.Location = new Point(21, 265);
+            button_4.Location = new Point(21, 275);
             button_4.Name = "button_4";
             button_4.Size = new Size(69, 54);
             button_4.TabIndex = 6;
@@ -143,7 +143,7 @@
             // 
             // button_9
             // 
-            button_9.Location = new Point(185, 200);
+            button_9.Location = new Point(185, 210);
             button_9.Name = "button_9";
             button_9.Size = new Size(69, 54);
             button_9.TabIndex = 11;
@@ -153,7 +153,7 @@
             // 
             // button_8
             // 
-            button_8.Location = new Point(102, 200);
+            button_8.Location = new Point(102, 210);
             button_8.Name = "button_8";
             button_8.Size = new Size(69, 54);
             button_8.TabIndex = 10;
@@ -163,7 +163,7 @@
             // 
             // button_7
             // 
-            button_7.Location = new Point(21, 200);
+            button_7.Location = new Point(21, 210);
             button_7.Name = "button_7";
             button_7.Size = new Size(69, 54);
             button_7.TabIndex = 9;
@@ -173,7 +173,7 @@
             // 
             // equal
             // 
-            equal.Location = new Point(265, 393);
+            equal.Location = new Point(265, 403);
             equal.Name = "equal";
             equal.Size = new Size(61, 54);
             equal.TabIndex = 12;
@@ -183,7 +183,7 @@
             // 
             // add
             // 
-            add.Location = new Point(265, 330);
+            add.Location = new Point(265, 340);
             add.Name = "add";
             add.Size = new Size(61, 54);
             add.TabIndex = 13;
@@ -193,7 +193,7 @@
             // 
             // minus
             // 
-            minus.Location = new Point(265, 263);
+            minus.Location = new Point(265, 273);
             minus.Name = "minus";
             minus.Size = new Size(61, 54);
             minus.TabIndex = 14;
@@ -203,7 +203,7 @@
             // 
             // multiple
             // 
-            multiple.Location = new Point(265, 200);
+            multiple.Location = new Point(265, 210);
             multiple.Name = "multiple";
             multiple.Size = new Size(61, 54);
             multiple.TabIndex = 15;
@@ -213,7 +213,7 @@
             // 
             // divide
             // 
-            divide.Location = new Point(265, 138);
+            divide.Location = new Point(265, 148);
             divide.Name = "divide";
             divide.Size = new Size(61, 54);
             divide.TabIndex = 16;
@@ -223,7 +223,7 @@
             // 
             // button_0
             // 
-            button_0.Location = new Point(102, 393);
+            button_0.Location = new Point(102, 403);
             button_0.Name = "button_0";
             button_0.Size = new Size(69, 54);
             button_0.TabIndex = 17;
@@ -233,14 +233,14 @@
             // 
             // result_box
             // 
-            result_box.Location = new Point(18, 40);
+            result_box.Location = new Point(18, 50);
             result_box.Name = "result_box";
             result_box.Size = new Size(310, 31);
             result_box.TabIndex = 18;
             // 
             // dot
             // 
-            dot.Location = new Point(185, 393);
+            dot.Location = new Point(185, 403);
             dot.Name = "dot";
             dot.Size = new Size(69, 54);
             dot.TabIndex = 19;
@@ -250,7 +250,7 @@
             // 
             // root
             // 
-            root.Location = new Point(102, 140);
+            root.Location = new Point(102, 150);
             root.Name = "root";
             root.Size = new Size(69, 54);
             root.TabIndex = 20;
@@ -260,7 +260,7 @@
             // 
             // square
             // 
-            square.Location = new Point(21, 140);
+            square.Location = new Point(21, 150);
             square.Name = "square";
             square.Size = new Size(69, 54);
             square.TabIndex = 21;
@@ -270,15 +270,15 @@
             // 
             // button1
             // 
-            button1.Location = new Point(217, 2);
+            button1.Location = new Point(217, 12);
             button1.Name = "button1";
             button1.Size = new Size(111, 32);
             button1.TabIndex = 22;
             button1.Text = "프로그래머";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += this.change_Click;
+            button1.Click += change_Click;
             // 
-            // pro_Form
+            // basic_Form
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -306,8 +306,9 @@
             Controls.Add(Clear);
             Controls.Add(input);
             Controls.Add(Title);
-            Name = "pro_Form";
-            Text = "Form1";
+            Name = "basic_Form";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "win calculator";
             ResumeLayout(false);
             PerformLayout();
         }
