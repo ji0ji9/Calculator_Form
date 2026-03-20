@@ -376,6 +376,7 @@
             // 
             // button_back
             // 
+            button_back.Enabled = false;
             button_back.Location = new Point(427, 3);
             button_back.Name = "button_back";
             button_back.Size = new Size(100, 45);
@@ -391,6 +392,7 @@
             buttonCancel.TabIndex = 3;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += cancel_Click;
             // 
             // buttonRsh
             // 
@@ -530,44 +532,56 @@
             // 
             // checkH
             // 
+            checkH.Appearance = Appearance.Button;
             checkH.AutoCheck = false;
-            checkH.AutoSize = true;
             checkH.Checked = true;
             checkH.CheckState = CheckState.Checked;
-            checkH.Location = new Point(19, 140);
+            checkH.Location = new Point(29, 137);
+            checkH.Margin = new Padding(0);
             checkH.Name = "checkH";
-            checkH.Size = new Size(22, 21);
+            checkH.Size = new Size(12, 30);
             checkH.TabIndex = 5;
+            checkH.TextImageRelation = TextImageRelation.TextBeforeImage;
+            checkH.ThreeState = true;
             checkH.UseVisualStyleBackColor = true;
             // 
             // checkD
             // 
+            checkD.Appearance = Appearance.Button;
             checkD.AutoCheck = false;
-            checkD.AutoSize = true;
-            checkD.Location = new Point(19, 179);
+            checkD.Location = new Point(29, 176);
+            checkD.Margin = new Padding(0);
             checkD.Name = "checkD";
-            checkD.Size = new Size(22, 21);
+            checkD.Size = new Size(12, 30);
             checkD.TabIndex = 6;
+            checkD.TextImageRelation = TextImageRelation.TextBeforeImage;
+            checkD.ThreeState = true;
             checkD.UseVisualStyleBackColor = true;
             // 
             // checkO
             // 
+            checkO.Appearance = Appearance.Button;
             checkO.AutoCheck = false;
-            checkO.AutoSize = true;
-            checkO.Location = new Point(19, 219);
+            checkO.Location = new Point(29, 215);
+            checkO.Margin = new Padding(0);
             checkO.Name = "checkO";
-            checkO.Size = new Size(22, 21);
+            checkO.Size = new Size(12, 30);
             checkO.TabIndex = 7;
+            checkO.TextImageRelation = TextImageRelation.TextBeforeImage;
+            checkO.ThreeState = true;
             checkO.UseVisualStyleBackColor = true;
             // 
             // checkB
             // 
+            checkB.Appearance = Appearance.Button;
             checkB.AutoCheck = false;
-            checkB.AutoSize = true;
-            checkB.Location = new Point(19, 257);
+            checkB.Location = new Point(29, 254);
+            checkB.Margin = new Padding(0);
             checkB.Name = "checkB";
-            checkB.Size = new Size(22, 21);
+            checkB.Size = new Size(12, 30);
             checkB.TabIndex = 8;
+            checkB.TextImageRelation = TextImageRelation.TextBeforeImage;
+            checkB.ThreeState = true;
             checkB.UseVisualStyleBackColor = true;
             // 
             // pro_Form
