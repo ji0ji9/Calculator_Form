@@ -18,7 +18,7 @@ namespace Calculator_Form
             InitializeComponent();
         }
 
-        private string temp;
+        private string temp = "";
         private string mode = "HEX";
 
         private void chg_Click(object sender, EventArgs e)
@@ -43,6 +43,7 @@ namespace Calculator_Form
         {
             Button btn = (Button)sender;
             result_box.Clear();
+            temp = "0";
             mode = btn.Text;
             checkH.Checked = (mode == "HEX");
             checkD.Checked = (mode == "DEC");
@@ -132,7 +133,104 @@ namespace Calculator_Form
             }
             else if (mode == "OCT")
             {
-                input.Split();
+                oct_box.Text = input;
+
+                string oBin = "";
+                foreach ( char c in input)
+                {
+                    // 2진수로 변환 후, BIN에 누적
+                    int octDigit = int.Parse(c.ToString());
+                    string triOct = "";
+                    while (octDigit > 0) 
+                    {
+                        if (octDigit - 4 >= 0) { triOct += "1"; octDigit -= 4; }
+                        else { triOct += "0"; }
+
+                        if(octDigit - 2 >= 0) { triOct += "1"; octDigit -= 2; }
+                        else { triOct += "0"; }
+
+                        if (octDigit - 1 >= 0) { triOct += "1"; octDigit -= 1; }
+                        else { triOct += "0"; }
+                    }
+                    
+
+                    oBin += triOct;
+                }
+                // to BIN
+                bin_box.Text = oBin;
+
+                oBin = new string(oBin.Reverse().ToArray()); // 연산을 위해 뒤집어줌
+
+                // to DEC
+                double dtemp = 0;
+                for (int i = 0; i < oBin.Length; i++) { dtemp += Math.Pow(2, i) * int.Parse(oBin[i].ToString()); }
+                dec_box.Text = dtemp.ToString();
+
+                // to HEX
+                string hhtemp = "";
+                double htemp = 0;
+                for (int i = 0; i < oBin.Length; i++)
+                {
+                    htemp += Math.Pow(2, i % 4) * int.Parse(oBin[i].ToString());
+                    if ((i + 1) % 4 == 0)
+                    {
+                        int hex = int.Parse(htemp.ToString());
+                        hhtemp += Convert.ToString(hex, 16).ToUpper(); // htemp(hex) -> 16진수
+                        htemp = 0;
+                        hex_box.Text = new string(hhtemp.Reverse().ToArray());
+                    }
+                    else hex_box.Text = new string((hhtemp + htemp).ToString().Reverse().ToArray());
+                }
+            }
+            else if(mode == "HEX")
+            {
+                hex_box.Text = input;
+
+                string hBin = "";
+
+                // c를 이진수로 변환
+                foreach (char c in input)
+                {
+                    int temp = Convert.ToInt32(c.ToString(), 16);
+                    string sqH = "";
+                    if (temp - 8 >=0) { sqH += "1"; temp -= 8; }
+                    else { sqH += "0"; }
+
+                    if (temp - 4 >= 0) { sqH += "1"; temp -= 4; }
+                    else { sqH += "0"; }
+
+                    if (temp - 2 >= 0) { sqH += "1"; temp -= 2; }
+                    else { sqH += "0"; }
+
+                    if (temp - 1 >= 0) { sqH += "1"; temp -= 1; }
+                    else { sqH += "0"; }
+
+                    hBin += sqH;
+                }
+
+                bin_box.Text = hBin;
+
+                // to OCT
+                double otemp = 0;
+                string ootemp = "";
+                hBin = new string(hBin.Reverse().ToArray()); // 연산을 위해 뒤집어줌
+                for (int i = 0; i < hBin.Length; i++) 
+                { 
+                    otemp += Math.Pow(2, i % 3) * int.Parse(hBin[i].ToString()); 
+                    if ((i + 1) % 3 == 0)
+                    {
+                        ootemp += otemp.ToString();
+                        oct_box.Text = new string((otemp.ToString() + ootemp).Reverse().ToArray());
+                        otemp = 0;
+                    }
+                    else oct_box.Text = new string((ootemp + otemp).Reverse().ToArray());
+                }
+
+                // to DEC
+                double dtemp = 0;
+                for (int i = 0; i < hBin.Length; i++) { dtemp += Math.Pow(2, i) * int.Parse(hBin[i].ToString()); }
+                dec_box.Text = dtemp.ToString();
+
             }
         }
     }

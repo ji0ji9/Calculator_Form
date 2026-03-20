@@ -184,6 +184,7 @@
             buttonF.TabIndex = 25;
             buttonF.Text = "F";
             buttonF.UseVisualStyleBackColor = true;
+            buttonF.Click += num_Click;
             // 
             // buttonPlus
             // 
@@ -232,6 +233,7 @@
             buttonE.TabIndex = 20;
             buttonE.Text = "E";
             buttonE.UseVisualStyleBackColor = true;
+            buttonE.Click += num_Click;
             // 
             // buttonMinus
             // 
@@ -280,6 +282,7 @@
             buttonD.TabIndex = 15;
             buttonD.Text = "D";
             buttonD.UseVisualStyleBackColor = true;
+            buttonD.Click += num_Click;
             // 
             // buttonMuitiple
             // 
@@ -328,6 +331,7 @@
             buttonC.TabIndex = 10;
             buttonC.Text = "C";
             buttonC.UseVisualStyleBackColor = true;
+            buttonC.Click += num_Click;
             // 
             // buttonDivide
             // 
@@ -373,6 +377,7 @@
             buttonB.TabIndex = 5;
             buttonB.Text = "B";
             buttonB.UseVisualStyleBackColor = true;
+            buttonB.Click += num_Click;
             // 
             // button_back
             // 
@@ -420,6 +425,7 @@
             buttonA.TabIndex = 0;
             buttonA.Text = "A";
             buttonA.UseVisualStyleBackColor = true;
+            buttonA.Click += num_Click;
             // 
             // label1
             // 
