@@ -42,8 +42,7 @@ namespace Calculator_Form
         private void mode_Click(object sender, EventArgs e) // gpt (코드 단순화)
         {
             Button btn = (Button)sender;
-            result_box.Clear();
-            temp = "0";
+            cancel_Click(null, null); // cancel 재사용
             mode = btn.Text;
             checkH.Checked = (mode == "HEX");
             checkD.Checked = (mode == "DEC");
