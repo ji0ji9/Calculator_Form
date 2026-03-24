@@ -177,6 +177,7 @@ namespace Calculator_Form
             }
             else if (mode == "OCT")
             {
+                Convert.ToString(int.Parse(input), 8);
                 oct_box.Text = input;
 
                 string oBin = "";
@@ -196,7 +197,6 @@ namespace Calculator_Form
                         if (octDigit - 1 >= 0) { triOct += "1"; octDigit -= 1; }
                         else { triOct += "0"; }
                     }
-
 
                     oBin += triOct;
                 }
