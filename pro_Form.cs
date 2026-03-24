@@ -16,10 +16,11 @@ namespace Calculator_Form
         public pro_Form()
         {
             InitializeComponent();
+            mode_Click(buttonDec, EventArgs.Empty);
         }
 
-        private string temp = "";
-        private string mode = "HEX";
+        private string temp;
+        private string mode;
 
         private void chg_Click(object sender, EventArgs e)
         {
@@ -53,7 +54,6 @@ namespace Calculator_Form
             button8.Enabled = button9.Enabled = (mode == "HEX" || mode == "DEC");
             button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = (mode != "BIN");
             button1.Enabled = button0.Enabled = true;
-
         }
 
         private void num_Click(object sender, EventArgs e)
@@ -74,7 +74,9 @@ namespace Calculator_Form
                 hex_box.Text = Convert.ToString(dec, 16).ToUpper();
                 dec_box.Text = input;
                 oct_box.Text = Convert.ToString(dec, 8);
-                bin_box.Text = Convert.ToString(dec, 2);
+                string bin = Convert.ToString(dec, 2);
+                bin = long.Parse(bin).ToString($"D{((bin.Length-1)/4+1)*4}");
+                bin_box.Text = bin;
             }
             else if (mode == "BIN")
             {
@@ -86,8 +88,8 @@ namespace Calculator_Form
                 double htemp = 0;
 
                 // BIN to DEC
-                for (int i = 0; i < rv.Length; i++) 
-                { 
+                for (int i = 0; i < rv.Length; i++)
+                {
                     dtemp += Math.Pow(2, i) * int.Parse(rv[i].ToString());
                 }
                 dec_box.Text = dtemp.ToString();
@@ -98,7 +100,7 @@ namespace Calculator_Form
                 {
                     oct_box.Clear();
                     otemp += Math.Pow(2, i % 3) * int.Parse(rv[i].ToString());
-                    if ((i+1) % 3 == 0)
+                    if ((i + 1) % 3 == 0)
                     {
                         ootemp += otemp.ToString(); // 3자리 연산 후 temp에 저장
                         otemp = 0; // 3 자리수에서 초기화
@@ -110,7 +112,7 @@ namespace Calculator_Form
                         //MessageBox.Show($"{otemp}, {ootemp}");
                     }
                 }
-                
+
                 // to HEX는 OCT와 동일 연산
                 string hhtemp = "";
                 for (int i = 0; i < rv.Length; i++)
@@ -124,7 +126,7 @@ namespace Calculator_Form
                         hex_box.Text = new string(hhtemp.Reverse().ToArray());
                     }
                     else
-                    { 
+                    {
                         hex_box.Text = new string((hhtemp.ToString() + htemp.ToString()).Reverse().ToArray());
                     }
                 }
@@ -135,23 +137,23 @@ namespace Calculator_Form
                 oct_box.Text = input;
 
                 string oBin = "";
-                foreach ( char c in input)
+                foreach (char c in input)
                 {
                     // 2진수로 변환 후, BIN에 누적
                     int octDigit = int.Parse(c.ToString());
                     string triOct = "";
-                    while (octDigit > 0) 
+                    while (octDigit > 0)
                     {
                         if (octDigit - 4 >= 0) { triOct += "1"; octDigit -= 4; }
                         else { triOct += "0"; }
 
-                        if(octDigit - 2 >= 0) { triOct += "1"; octDigit -= 2; }
+                        if (octDigit - 2 >= 0) { triOct += "1"; octDigit -= 2; }
                         else { triOct += "0"; }
 
                         if (octDigit - 1 >= 0) { triOct += "1"; octDigit -= 1; }
                         else { triOct += "0"; }
                     }
-                    
+
 
                     oBin += triOct;
                 }
@@ -181,7 +183,7 @@ namespace Calculator_Form
                     else hex_box.Text = new string((hhtemp + htemp).ToString().Reverse().ToArray());
                 }
             }
-            else if(mode == "HEX")
+            else if (mode == "HEX")
             {
                 hex_box.Text = input;
 
@@ -192,7 +194,7 @@ namespace Calculator_Form
                 {
                     int temp = Convert.ToInt32(c.ToString(), 16);
                     string sqH = "";
-                    if (temp - 8 >=0) { sqH += "1"; temp -= 8; }
+                    if (temp - 8 >= 0) { sqH += "1"; temp -= 8; }
                     else { sqH += "0"; }
 
                     if (temp - 4 >= 0) { sqH += "1"; temp -= 4; }
@@ -213,9 +215,9 @@ namespace Calculator_Form
                 double otemp = 0;
                 string ootemp = "";
                 hBin = new string(hBin.Reverse().ToArray()); // 연산을 위해 뒤집어줌
-                for (int i = 0; i < hBin.Length; i++) 
-                { 
-                    otemp += Math.Pow(2, i % 3) * int.Parse(hBin[i].ToString()); 
+                for (int i = 0; i < hBin.Length; i++)
+                {
+                    otemp += Math.Pow(2, i % 3) * int.Parse(hBin[i].ToString());
                     if ((i + 1) % 3 == 0)
                     {
                         ootemp += otemp.ToString();
