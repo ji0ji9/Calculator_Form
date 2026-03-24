@@ -75,6 +75,7 @@
             checkD = new CheckBox();
             checkO = new CheckBox();
             checkB = new CheckBox();
+            temp_box = new TextBox();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -128,7 +129,7 @@
             tableLayoutPanel1.Controls.Add(buttonRsh, 2, 0);
             tableLayoutPanel1.Controls.Add(buttonLsh, 1, 0);
             tableLayoutPanel1.Controls.Add(buttonA, 0, 0);
-            tableLayoutPanel1.Location = new Point(14, 242);
+            tableLayoutPanel1.Location = new Point(14, 252);
             tableLayoutPanel1.Margin = new Padding(2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 6;
@@ -150,6 +151,7 @@
             buttonEqual.TabIndex = 29;
             buttonEqual.Text = "=";
             buttonEqual.UseVisualStyleBackColor = true;
+            buttonEqual.Click += Equal_Click;
             // 
             // buttonDot
             // 
@@ -447,6 +449,7 @@
             buttonLsh.TabIndex = 1;
             buttonLsh.Text = "<<";
             buttonLsh.UseVisualStyleBackColor = true;
+            buttonLsh.Click += shift_Click;
             // 
             // buttonA
             // 
@@ -474,11 +477,11 @@
             result_box.AcceptsReturn = true;
             result_box.BackColor = SystemColors.Window;
             result_box.BorderStyle = BorderStyle.None;
-            result_box.Font = new Font("맑은 고딕", 15F);
-            result_box.Location = new Point(16, 49);
+            result_box.Font = new Font("맑은 고딕", 20F);
+            result_box.Location = new Point(16, 82);
             result_box.Margin = new Padding(2);
             result_box.Name = "result_box";
-            result_box.Size = new Size(424, 27);
+            result_box.Size = new Size(424, 36);
             result_box.TabIndex = 3;
             result_box.TextAlign = HorizontalAlignment.Right;
             // 
@@ -495,7 +498,7 @@
             tableLayoutPanel2.Controls.Add(buttonDec, 0, 1);
             tableLayoutPanel2.Controls.Add(buttonHex, 0, 0);
             tableLayoutPanel2.Controls.Add(hex_box, 1, 0);
-            tableLayoutPanel2.Location = new Point(28, 100);
+            tableLayoutPanel2.Location = new Point(27, 127);
             tableLayoutPanel2.Margin = new Padding(2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 4;
@@ -511,7 +514,7 @@
             bin_box.Location = new Point(79, 92);
             bin_box.Margin = new Padding(2);
             bin_box.Name = "bin_box";
-            bin_box.Size = new Size(326, 26);
+            bin_box.Size = new Size(332, 26);
             bin_box.TabIndex = 10;
             // 
             // oct_box
@@ -519,7 +522,7 @@
             oct_box.Location = new Point(79, 62);
             oct_box.Margin = new Padding(2);
             oct_box.Name = "oct_box";
-            oct_box.Size = new Size(326, 26);
+            oct_box.Size = new Size(332, 26);
             oct_box.TabIndex = 9;
             // 
             // dec_box
@@ -527,7 +530,7 @@
             dec_box.Location = new Point(79, 32);
             dec_box.Margin = new Padding(2);
             dec_box.Name = "dec_box";
-            dec_box.Size = new Size(326, 26);
+            dec_box.Size = new Size(332, 26);
             dec_box.TabIndex = 8;
             // 
             // buttoBin
@@ -579,7 +582,7 @@
             hex_box.Location = new Point(79, 2);
             hex_box.Margin = new Padding(2);
             hex_box.Name = "hex_box";
-            hex_box.Size = new Size(326, 26);
+            hex_box.Size = new Size(332, 26);
             hex_box.TabIndex = 7;
             // 
             // checkH
@@ -588,10 +591,10 @@
             checkH.AutoCheck = false;
             checkH.Checked = true;
             checkH.CheckState = CheckState.Checked;
-            checkH.Location = new Point(16, 104);
+            checkH.Location = new Point(14, 131);
             checkH.Margin = new Padding(0);
             checkH.Name = "checkH";
-            checkH.Size = new Size(10, 23);
+            checkH.Size = new Size(11, 23);
             checkH.TabIndex = 5;
             checkH.TextImageRelation = TextImageRelation.TextBeforeImage;
             checkH.ThreeState = true;
@@ -601,10 +604,10 @@
             // 
             checkD.Appearance = Appearance.Button;
             checkD.AutoCheck = false;
-            checkD.Location = new Point(16, 134);
+            checkD.Location = new Point(14, 161);
             checkD.Margin = new Padding(0);
             checkD.Name = "checkD";
-            checkD.Size = new Size(10, 23);
+            checkD.Size = new Size(11, 23);
             checkD.TabIndex = 6;
             checkD.TextImageRelation = TextImageRelation.TextBeforeImage;
             checkD.ThreeState = true;
@@ -614,10 +617,10 @@
             // 
             checkO.Appearance = Appearance.Button;
             checkO.AutoCheck = false;
-            checkO.Location = new Point(16, 163);
+            checkO.Location = new Point(14, 190);
             checkO.Margin = new Padding(0);
             checkO.Name = "checkO";
-            checkO.Size = new Size(10, 23);
+            checkO.Size = new Size(11, 23);
             checkO.TabIndex = 7;
             checkO.TextImageRelation = TextImageRelation.TextBeforeImage;
             checkO.ThreeState = true;
@@ -627,20 +630,31 @@
             // 
             checkB.Appearance = Appearance.Button;
             checkB.AutoCheck = false;
-            checkB.Location = new Point(16, 193);
+            checkB.Location = new Point(14, 220);
             checkB.Margin = new Padding(0);
             checkB.Name = "checkB";
-            checkB.Size = new Size(10, 23);
+            checkB.Size = new Size(11, 23);
             checkB.TabIndex = 8;
             checkB.TextImageRelation = TextImageRelation.TextBeforeImage;
             checkB.ThreeState = true;
             checkB.UseVisualStyleBackColor = true;
+            // 
+            // temp_box
+            // 
+            temp_box.BorderStyle = BorderStyle.None;
+            temp_box.Font = new Font("맑은 고딕", 12F);
+            temp_box.ForeColor = SystemColors.WindowFrame;
+            temp_box.Location = new Point(16, 52);
+            temp_box.Name = "temp_box";
+            temp_box.Size = new Size(426, 22);
+            temp_box.TabIndex = 9;
             // 
             // pro_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(462, 500);
+            Controls.Add(temp_box);
             Controls.Add(checkB);
             Controls.Add(checkO);
             Controls.Add(checkD);
@@ -710,5 +724,6 @@
         private CheckBox checkD;
         private CheckBox checkO;
         private CheckBox checkB;
+        private TextBox temp_box;
     }
 }

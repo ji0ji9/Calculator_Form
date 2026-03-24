@@ -21,6 +21,7 @@ namespace Calculator_Form
 
         private string temp;
         private string mode;
+        string sh;
 
         private void chg_Click(object sender, EventArgs e)
         {
@@ -63,6 +64,9 @@ namespace Calculator_Form
 
             temp += btn.Text;
             result_box.Text = temp;
+
+            if (sh != "") temp_box.Text += temp;
+
             numChanger(temp);
         }
 
@@ -75,7 +79,7 @@ namespace Calculator_Form
                 dec_box.Text = input;
                 oct_box.Text = Convert.ToString(dec, 8);
                 string bin = Convert.ToString(dec, 2);
-                bin = long.Parse(bin).ToString($"D{((bin.Length-1)/4+1)*4}");
+                bin = long.Parse(bin).ToString($"D{((bin.Length - 1) / 4 + 1) * 4}");
                 bin_box.Text = bin;
             }
             else if (mode == "BIN")
@@ -233,6 +237,36 @@ namespace Calculator_Form
                 dec_box.Text = dtemp.ToString();
 
             }
+        }
+
+        private void shift_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            sh = btn.Text;
+            if (sh == ">>") result_box.Text = temp + " Rsh ";
+            else temp_box.Text = temp + " Lsh ";
+        }
+
+        private void Equal_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            temp_box.Text += " =";
+            int result;
+            if (sh != "")
+            {
+                string[] splitSim = { "Rsh", "Lsh" };
+                string[] split_num = temp_box.Text.Split(splitSim, 2, StringSplitOptions.RemoveEmptyEntries);
+                if (sh == ">>")
+                {
+                    result = int.Parse(split_num[0]) >> int.Parse(split_num[1]);
+                }
+                else
+                {
+                    result = int.Parse(split_num[0]) << int.Parse(split_num[1]);
+                }
+                result_box.Text = result.ToString();
+            }
+            sh = "";
         }
     }
 }
