@@ -21,7 +21,11 @@ namespace Calculator_Form
 
         private string temp;
         private string mode;
+        private string operater;
+        private string temp_b;
+        int result = 0;
         string sh;
+        bool equal_flag = false;
 
         private void chg_Click(object sender, EventArgs e)
         {
@@ -34,6 +38,7 @@ namespace Calculator_Form
         private void cancel_Click(object sender, EventArgs e)
         {
             result_box.Clear();
+            temp_box.Clear();
             hex_box.Clear();
             dec_box.Clear();
             oct_box.Clear();
@@ -63,9 +68,35 @@ namespace Calculator_Form
             if (result_box.Text == "0") temp = "0";
 
             temp += btn.Text;
-            result_box.Text = temp;
 
-            if (sh != "") temp_box.Text += temp;
+            if (string.IsNullOrEmpty(operater)) result_box.Text = temp;
+            else
+            {
+                temp_box.Text = temp_b + operater + temp;
+                result_box.Text = temp;
+                int n = 10;
+                if (mode == "DEC") n = 10;
+                else if (mode == "OCT") n = 8;
+                else if (mode == "HEX") n = 16;
+                else if (mode == "BIN") n = 2;
+
+                if (operater == "+")
+                {
+                    result = Convert.ToInt32(temp_b, n) + Convert.ToInt32(temp, n);
+                }
+                else if (operater == "-")
+                {
+                    result = int.Parse(temp_b) - int.Parse(temp);
+                }
+                else if (operater == "÷")
+                {
+                    result = int.Parse(temp_b) / int.Parse(temp);
+                }
+                else if (operater == "×")
+                {
+                    result = int.Parse(temp_b) * int.Parse(temp);
+                }
+            }
 
             numChanger(temp);
         }
@@ -77,16 +108,24 @@ namespace Calculator_Form
                 int dec = int.Parse(input);
                 hex_box.Text = Convert.ToString(dec, 16).ToUpper();
                 dec_box.Text = input;
-                oct_box.Text = Convert.ToString(dec, 8);
+                string oct = Convert.ToString(dec, 8);
+                oct = long.Parse(oct).ToString($"D{((oct.Length - 1) / 3 + 1) * 3}");
+                oct_box.Text = oct;
                 string bin = Convert.ToString(dec, 2);
                 bin = long.Parse(bin).ToString($"D{((bin.Length - 1) / 4 + 1) * 4}");
                 bin_box.Text = bin;
             }
             else if (mode == "BIN")
             {
-                bin_box.Text = input;
+                if (equal_flag)
+                {
+                    bin_box.Text = Convert.ToString(result, 2);
+                    result_box.Text = Convert.ToString(result, 2);
+                    equal_flag = false;
+                }
+                else bin_box.Text = input;
 
-                string rv = new string(input.Reverse().ToArray());  // gpt(뒤집는 연산방법)
+                    string rv = new string(input.Reverse().ToArray());  // gpt(뒤집는 연산방법)
                 double dtemp = 0;   // to Dec
                 double otemp = 0;
                 double htemp = 0;
@@ -250,23 +289,41 @@ namespace Calculator_Form
         private void Equal_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            equal_flag = true;
+
             temp_box.Text += " =";
-            int result;
+            int sh_result = 0;
             if (sh != "")
             {
                 string[] splitSim = { "Rsh", "Lsh" };
                 string[] split_num = temp_box.Text.Split(splitSim, 2, StringSplitOptions.RemoveEmptyEntries);
                 if (sh == ">>")
                 {
-                    result = int.Parse(split_num[0]) >> int.Parse(split_num[1]);
+                    sh_result = int.Parse(split_num[0]) >> int.Parse(split_num[1]);
                 }
-                else
+                else if (sh == "<<")
                 {
-                    result = int.Parse(split_num[0]) << int.Parse(split_num[1]);
+                    sh_result = int.Parse(split_num[0]) << int.Parse(split_num[1]);
                 }
-                result_box.Text = result.ToString();
+                result_box.Text = sh_result.ToString();
             }
-            sh = "";
+
+            if (!string.IsNullOrEmpty(operater))
+            {
+                result_box.Text = result.ToString();
+                operater = "";
+                numChanger(result.ToString());
+            }
+            temp = "";
+        }
+
+        private void op_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            operater = btn.Text;
+            temp_box.Text = temp + operater;
+            temp_b = temp;
+            temp = "";
         }
     }
 }

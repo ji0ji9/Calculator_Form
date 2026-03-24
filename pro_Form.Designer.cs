@@ -204,6 +204,7 @@
             buttonPlus.TabIndex = 24;
             buttonPlus.Text = "+";
             buttonPlus.UseVisualStyleBackColor = true;
+            buttonPlus.Click += op_Click;
             // 
             // button3
             // 
@@ -258,6 +259,7 @@
             buttonMinus.TabIndex = 19;
             buttonMinus.Text = "-";
             buttonMinus.UseVisualStyleBackColor = true;
+            buttonMinus.Click += op_Click;
             // 
             // button6
             // 
@@ -312,6 +314,7 @@
             buttonMuitiple.TabIndex = 14;
             buttonMuitiple.Text = "×";
             buttonMuitiple.UseVisualStyleBackColor = true;
+            buttonMuitiple.Click += op_Click;
             // 
             // button9
             // 
@@ -366,6 +369,7 @@
             buttonDivide.TabIndex = 9;
             buttonDivide.Text = "÷";
             buttonDivide.UseVisualStyleBackColor = true;
+            buttonDivide.Click += op_Click;
             // 
             // buttonPercent
             // 
@@ -648,6 +652,7 @@
             temp_box.Name = "temp_box";
             temp_box.Size = new Size(426, 22);
             temp_box.TabIndex = 9;
+            temp_box.TextAlign = HorizontalAlignment.Right;
             // 
             // pro_Form
             // 
