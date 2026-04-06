@@ -430,7 +430,7 @@
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(80, 34);
             buttonCancel.TabIndex = 3;
-            buttonCancel.Text = "Cancel";
+            buttonCancel.Text = "Clear";
             buttonCancel.UseVisualStyleBackColor = true;
             buttonCancel.Click += cancel_Click;
             // 
@@ -591,23 +591,29 @@
             // 
             // checkH
             // 
+            checkH.AccessibleRole = AccessibleRole.None;
             checkH.Appearance = Appearance.Button;
             checkH.AutoCheck = false;
             checkH.Checked = true;
             checkH.CheckState = CheckState.Checked;
+            checkH.Enabled = false;
             checkH.Location = new Point(14, 131);
             checkH.Margin = new Padding(0);
             checkH.Name = "checkH";
             checkH.Size = new Size(11, 23);
             checkH.TabIndex = 5;
+            checkH.TabStop = false;
             checkH.TextImageRelation = TextImageRelation.TextBeforeImage;
             checkH.ThreeState = true;
+            checkH.UseMnemonic = false;
             checkH.UseVisualStyleBackColor = true;
             // 
             // checkD
             // 
+            checkD.AccessibleRole = AccessibleRole.None;
             checkD.Appearance = Appearance.Button;
             checkD.AutoCheck = false;
+            checkD.Enabled = false;
             checkD.Location = new Point(14, 161);
             checkD.Margin = new Padding(0);
             checkD.Name = "checkD";
@@ -621,6 +627,7 @@
             // 
             checkO.Appearance = Appearance.Button;
             checkO.AutoCheck = false;
+            checkO.Enabled = false;
             checkO.Location = new Point(14, 190);
             checkO.Margin = new Padding(0);
             checkO.Name = "checkO";
@@ -634,6 +641,7 @@
             // 
             checkB.Appearance = Appearance.Button;
             checkB.AutoCheck = false;
+            checkB.Enabled = false;
             checkB.Location = new Point(14, 220);
             checkB.Margin = new Padding(0);
             checkB.Name = "checkB";

@@ -13,12 +13,6 @@ namespace Calculator_Form
 {
     public partial class pro_Form : Form
     {
-        public pro_Form()
-        {
-            InitializeComponent();
-            mode_Click(buttonDec, EventArgs.Empty);
-        }
-
         private string temp;
         private string mode;
         private string operater;
@@ -26,6 +20,12 @@ namespace Calculator_Form
         int result = 0;
         string sh;
         bool equal_flag = false;
+
+        public pro_Form()
+        {
+            InitializeComponent();
+            mode_Click(buttonDec, EventArgs.Empty);
+        }
 
         private void chg_Click(object sender, EventArgs e)
         {
@@ -105,15 +105,30 @@ namespace Calculator_Form
         {
             if (mode == "DEC")
             {
+
                 int dec = int.Parse(input);
                 hex_box.Text = Convert.ToString(dec, 16).ToUpper();
                 dec_box.Text = input;
+
                 string oct = Convert.ToString(dec, 8);
-                oct = long.Parse(oct).ToString($"D{((oct.Length - 1) / 3 + 1) * 3}");
-                oct_box.Text = oct;
+                oct = new string('0', (3 - oct.Length % 3) % 3) + oct;
+                string toct = "";
+                for (int i = 0; i < oct.Length; i++)
+                {
+                    if ((i + 1) % 3 == 0) toct += oct[i] + " ";
+                    else toct += oct[i];
+                }
+                oct_box.Text = toct;
+
                 string bin = Convert.ToString(dec, 2);
-                bin = long.Parse(bin).ToString($"D{((bin.Length - 1) / 4 + 1) * 4}");
-                bin_box.Text = bin;
+                bin = new string('0',(4 - bin.Length % 4) % 4) + bin;
+                string tbin = "";
+                for (int i = 0; i < bin.Length; i++)
+                {
+                    if ((i + 1) % 4 == 0) tbin += bin[i] + " ";
+                    else tbin += bin[i];
+                }
+                bin_box.Text = tbin;
             }
             else if (mode == "BIN")
             {
@@ -125,7 +140,7 @@ namespace Calculator_Form
                 }
                 else bin_box.Text = input;
 
-                    string rv = new string(input.Reverse().ToArray());  // gpt(뒤집는 연산방법)
+                string rv = new string(input.Reverse().ToArray());  // gpt(뒤집는 연산방법)
                 double dtemp = 0;   // to Dec
                 double otemp = 0;
                 double htemp = 0;
@@ -230,10 +245,9 @@ namespace Calculator_Form
             {
                 hex_box.Text = input;
 
+                // to BIN
                 string hBin = "";
-
-                // c를 이진수로 변환
-                foreach (char c in input)
+                foreach (char c in input)  // c를 이진수로 변환, 4 자리수로 맞춰 누적
                 {
                     int temp = Convert.ToInt32(c.ToString(), 16);
                     string sqH = "";
@@ -252,29 +266,21 @@ namespace Calculator_Form
                     hBin += sqH;
                 }
 
-                bin_box.Text = hBin;
+                // to DEC
+                int hDec = Convert.ToInt32(hBin, 2);
+                dec_box.Text = Convert.ToString(hDec);
 
                 // to OCT
-                double otemp = 0;
-                string ootemp = "";
-                hBin = new string(hBin.Reverse().ToArray()); // 연산을 위해 뒤집어줌
+                oct_box.Text = Convert.ToString(hDec, 8);
+
+                string btemp = "";
+                // 2진수 4자리씩 끊기
                 for (int i = 0; i < hBin.Length; i++)
                 {
-                    otemp += Math.Pow(2, i % 3) * int.Parse(hBin[i].ToString());
-                    if ((i + 1) % 3 == 0)
-                    {
-                        ootemp += otemp.ToString();
-                        oct_box.Text = new string((otemp.ToString() + ootemp).Reverse().ToArray());
-                        otemp = 0;
-                    }
-                    else oct_box.Text = new string((ootemp + otemp).Reverse().ToArray());
+                    btemp += hBin[i];
+                    if ((i + 1) % 4 == 0) btemp += " ";
                 }
-
-                // to DEC
-                double dtemp = 0;
-                for (int i = 0; i < hBin.Length; i++) { dtemp += Math.Pow(2, i) * int.Parse(hBin[i].ToString()); }
-                dec_box.Text = dtemp.ToString();
-
+                bin_box.Text = btemp;
             }
         }
 
